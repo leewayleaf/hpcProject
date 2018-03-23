@@ -48,11 +48,12 @@ subroutine output
   character(LEN=80) :: filename
   character(LEN=5)  :: char,charpe
   integer(kind=prec_int) :: nout,MYPE=0
+  character(*), parameter :: fileplace = "../Output/"  ! added by YLW
 
   nout=nstep/noutput
   call title(nout,char)
   call title(MYPE,charpe)
-  filename='output_'//TRIM(char)//'.'//TRIM(charpe)
+  filename=fileplace//'output_'//TRIM(char)//'.'//TRIM(charpe)  ! edited by YLW
   open(10,file=filename,form='unformatted')
   rewind(10)
   print*,'Outputting array of size=',nx,ny,nvar
